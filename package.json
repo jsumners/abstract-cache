@@ -1,0 +1,33 @@
+{
+  "name": "abstract-cache",
+  "version": "1.0.0",
+  "description": "An abstract object cache interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap 'test/**/*.test.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jsumners/abstract-cache.git"
+  },
+  "keywords": [
+    "cache",
+    "generic",
+    "adapter"
+  ],
+  "author": "James Sumners <james.sumners@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jsumners/abstract-cache/issues"
+  },
+  "homepage": "https://github.com/jsumners/abstract-cache#readme",
+  "devDependencies": {
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.3",
+    "tap": "^10.7.3"
+  },
+  "dependencies": {
+    "lru_map": "^0.3.3",
+    "merge-options": "^1.0.0"
+  }
+}
