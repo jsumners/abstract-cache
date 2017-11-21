@@ -50,7 +50,7 @@ cache.set('foo', 'foo', 100)
 
 ## Options
 
-*abstract*client* accepts an options object with the following properties:
+*abstract-client* accepts an options object with the following properties:
 
 + `useAwait` (Default: `false`): designate that the resulting cache client
 should use `async/await` functions. When `false`, every method accepts a
