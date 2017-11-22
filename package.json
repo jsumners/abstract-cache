@@ -4,8 +4,13 @@
   "description": "An abstract object cache interface",
   "main": "index.js",
   "scripts": {
-    "test": "tap 'test/**/*.test.js'"
+    "test": "tap 'test/**/*.test.js'",
+    "lint": "standard | snazzy"
   },
+  "precommit": [
+    "lint",
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/jsumners/abstract-cache.git"
@@ -22,6 +27,7 @@
   },
   "homepage": "https://github.com/jsumners/abstract-cache#readme",
   "devDependencies": {
+    "pre-commit": "^1.2.2",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3",
     "tap": "^10.7.3"
