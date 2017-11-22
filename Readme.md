@@ -4,6 +4,15 @@
 caching strategies. It allows for requiring *abstract-cache* everywhere while
 defining the strategy via a simple configuration.
 
+*abstract-cache* is heavily inspired by the excellent [Catbox][catbox]. The
+decision to create *abstract-cache* was predicated on a desire to require
+implementing clients accept previously established connections in addtion to
+accepting configuration to create their own connections. It also seeks to
+allow using either the callback or async/await style of asynchronous
+programming.
+
+[catbox]: https://npm.im/catbox
+
 ## Example
 
 The following example uses *abstract-cache*'s included in-memory cache. Of note,
