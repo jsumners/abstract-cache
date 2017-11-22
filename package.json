@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/jsumners/abstract-cache#readme",
   "devDependencies": {
+    "mock-require": "^2.0.2",
     "pre-commit": "^1.2.2",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3",
