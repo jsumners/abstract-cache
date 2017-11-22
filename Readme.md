@@ -65,6 +65,21 @@ a `client` superceeds the `driver` configuration.
     * `options` (Default: `{}`): an options object to pass to the strategy
     while loading. The strategy should describe this object.
 
+### memclient
+
+The included in-memory client is available as:
+
+```js
+const memclientFactory = require('abstract-cache').memclient
+```
+
+It accepts an options object:
+
++ `segment` (Default: `abstractMemcache`): the default segment in which to store
+items.
++ `maxItems` (Default: `100000`): the maximum number of items to keep in the
+cache. The backing is an LRU cache with an upper bound.
+
 ## Protocol
 
 All implementing strategies **must** implement the protocol described in this
@@ -76,7 +91,7 @@ section.
 1. In all cases where a `key` is required, the `key` may be a simple string,
 or it may be an object of the format `{id: 'name', segment: 'name'}`. It is
 up to the implementing strategy to decide how to handle these keys.
-1. The factory function should return an object that has the following
+1. The factory function should return an object (client) that has the following
 methods and properties:
     * `await` (boolean property): `true` indicates that the strategy's methods
     are *all* `async` functions. If `false`, all methods **must** have a

@@ -1,7 +1,13 @@
 'use strict'
 
 const test = require('tap').test
-const memclientFactory = require('../lib/memclient')
+const memclientFactory = require('../').memclient
+
+test('instances indicate asynchronous nature', (t) => {
+  t.plan(1)
+  const cache = memclientFactory()
+  t.is(cache.await, false)
+})
 
 test('cache stores items', (t) => {
   t.plan(6)
@@ -9,13 +15,15 @@ test('cache stores items', (t) => {
   cache.set('foo', 'foo', 100, (err) => {
     t.error(err)
 
-    cache.get('foo', (err, cached) => {
-      t.error(err)
-      t.ok(cached.item)
-      t.ok(cached.ttl)
-      t.ok(cached.stored)
-      t.ok(cached.ttl < 100)
-    })
+    setTimeout(() => {
+      cache.get('foo', (err, cached) => {
+        t.error(err)
+        t.ok(cached.item)
+        t.ok(cached.ttl)
+        t.ok(cached.stored)
+        t.ok(cached.ttl < 100)
+      })
+    }, 10)
   })
 })
 

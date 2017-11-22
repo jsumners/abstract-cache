@@ -33,3 +33,5 @@ module.exports = function abstractCache (options) {
   // User wants callback style and client is callback style.
   return client
 }
+
+module.exports.memclient = require('./lib/memclient')
