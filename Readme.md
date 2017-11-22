@@ -73,6 +73,9 @@ section.
 1. The module should export a factory `function (optionsObject) {}`.
 1. Accept an existing connection to data stores via the `optionsObject`.
 1. Manage connections created by itself.
+1. In all cases where a `key` is required, the `key` may be a simple string,
+or it may be an object of the format `{id: 'name', segment: 'name'}`. It is
+up to the implementing strategy to decide how to handle these keys.
 1. The factory function should return an object that has the following
 methods and properties:
     * `await` (boolean property): `true` indicates that the strategy's methods
