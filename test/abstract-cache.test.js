@@ -88,3 +88,16 @@ test('returns a callback client when callback style is desired', (t) => {
   })
   t.is(future, undefined)
 })
+
+test('supports clients with start/stop', (t) => {
+  t.plan(2)
+  const client = factory({
+    useAwait: true,
+    client: mocks.startAsyncClient()
+  })
+  client.start()
+    .then((started) => t.is(started, true))
+    .then(() => client.stop())
+    .then((stopped) => t.is(stopped, true))
+    .catch(t.threw)
+})

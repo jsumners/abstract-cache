@@ -117,6 +117,14 @@ methods and properties:
     contains the desired `key`.
     * `set(key, value, ttl[, callback])`: stores the specified `value` in the
     cache under the specified `key` for the time `ttl` in milliseconds.
+    * `start([callback])` (optional): clients that require extra initialization,
+    e.g. to start a database connection, may export this method. When present,
+    this method **must** be invoked by the user before any other method. This
+    method may be an `async` function at the discretion of the implementor.
+    * `stop([callback])` (optional): required when `start()` is present. This
+    should shutdown any connections/processes started via `start()`. It is
+    left to the user to invoke this method in their shutdown procedure. This
+    method may be an `async` function at the discretion of the implementor.
 
 ## License
 

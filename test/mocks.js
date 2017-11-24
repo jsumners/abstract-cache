@@ -35,3 +35,14 @@ module.exports.cbClient = function () {
     }
   }
 }
+
+module.exports.startAsyncClient = function () {
+  const client = module.exports.awaitClient()
+  client.start = function () {
+    return Promise.resolve(true)
+  }
+  client.stop = async function () {
+    return Promise.resolve(true)
+  }
+  return client
+}
