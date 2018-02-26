@@ -60,3 +60,21 @@ test('wraps delete', (t) => {
     })
   })
 })
+
+test('has start and stop', (t) => {
+  t.plan(4)
+  const client = {
+    start () {
+      t.pass()
+      return Promise.resolve()
+    },
+    stop () {
+      t.pass()
+      return Promise.resolve()
+    }
+  }
+
+  const wrapped = wrapAwaitFactory(client)
+  wrapped.start((err) => t.is(err, null))
+  wrapped.stop((err) => t.is(err, null))
+})

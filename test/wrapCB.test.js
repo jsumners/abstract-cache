@@ -45,3 +45,20 @@ test('wraps delete', (t) => {
     .then((result) => t.is(result, false))
     .catch(t.threw)
 })
+
+test('has start and stop', (t) => {
+  t.plan(4)
+  const client = {
+    start (cb) {
+      t.type(cb, 'function')
+      cb(null)
+    },
+    stop (cb) {
+      t.type(cb, 'function')
+      cb(null)
+    }
+  }
+  const wrapped = wrapCBFactory(client)
+  wrapped.start().then(t.pass).catch(t.threw)
+  wrapped.stop().then(t.pass).catch(t.threw)
+})

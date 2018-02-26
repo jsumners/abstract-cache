@@ -40,6 +40,7 @@ test('creates an in-memory client if no configuration provided', (t) => {
 test('creates a client by specifying a driver', (t) => {
   t.plan(1)
   mockquire('abstract-cache-foo', factory.memclient)
+  t.tearDown(() => mockquire.stopAll())
   const client = factory({driver: {name: 'abstract-cache-foo'}})
   t.is(client.await, false)
 })
@@ -99,5 +100,31 @@ test('supports clients with start/stop', (t) => {
     .then((started) => t.is(started, true))
     .then(() => client.stop())
     .then((stopped) => t.is(stopped, true))
+    .catch(t.threw)
+})
+
+test('exposes start and stop via driver', (t) => {
+  t.plan(6)
+  mockquire('abstract-cache-foo', () => {
+    return {
+      await: true,
+      start () {
+        t.pass()
+        return Promise.resolve()
+      },
+      stop () {
+        t.pass()
+        return Promise.resolve()
+      }
+    }
+  })
+  t.tearDown(() => mockquire.stopAll())
+  const client = factory({useAwait: true, driver: {name: 'abstract-cache-foo'}})
+  t.type(client.start, Function)
+  t.type(client.stop, Function)
+  client.start()
+    .then(() => t.pass())
+    .then(() => client.stop())
+    .then(() => t.pass())
     .catch(t.threw)
 })
