@@ -29,11 +29,11 @@
   },
   "homepage": "https://github.com/jsumners/abstract-cache#readme",
   "devDependencies": {
-    "mock-require": "^2.0.2",
+    "mock-require": "^3.0.1",
     "pre-commit": "^1.2.2",
     "snazzy": "^7.0.0",
-    "standard": "^10.0.3",
-    "tap": "^10.7.3"
+    "standard": "^11.0.0",
+    "tap": "^11.1.1"
   },
   "dependencies": {
     "clone": "^2.1.1",
