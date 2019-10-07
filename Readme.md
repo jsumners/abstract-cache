@@ -24,7 +24,7 @@ The following example uses *abstract-cache*'s included in-memory cache. Of note,
 is that the included in-memory cache is actually callback based.
 
 ```js
-const cache = requre('abstract-cache')({useAwait: true})
+const cache = require('abstract-cache')({useAwait: true})
 
 async function doSomething () {
   const val = await cache.get('foo')
